@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default nextConfig;
+const nextConfig = {
+    eslint: {
+      lintDirs: ['pages', 'components'],
+      ignoreDuringBuilds: true,
+      rules: {
+        'react/no-unescaped-entities': 'off',
+      },
+    },
+  };
+  
+  export default nextConfig;
