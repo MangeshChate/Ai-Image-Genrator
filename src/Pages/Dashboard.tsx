@@ -2,7 +2,7 @@ import Dashboard_Left from '@/components/Dashboard_Left'
 import Dashboard_Right from '@/components/Dashboard_Right'
 import Navbar from '@/components/Navbar'
 import { Card } from '@/components/ui/card'
-import React from 'react'
+
 
 const Dashboard = () => {
   return (

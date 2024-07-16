@@ -1,6 +1,6 @@
 
 import Home from '@/Pages/Home'
-import React from 'react'
+
 
 const homePage = () => {
   return (

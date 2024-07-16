@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Image from "next/image";
 import logo from "../../public/logo.png";
 import { Button } from './ui/button';
@@ -21,7 +21,7 @@ const Navbar = () => {
         <div className='flex gap-4'>
           <Button className='hidden sm:hidden md:hidden lg:block'>Login</Button>
           <Link href={"/dashboard"}>
-          <Button className='bg-transparent border-2 rounded-lg border-purple-800'>Let's Genrate</Button>
+          <Button className='bg-transparent border-2 rounded-lg border-purple-800'>Lets Genrate</Button>
           </Link>
         </div>
       </div>
