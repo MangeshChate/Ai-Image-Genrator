@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className='hidden sm:hidden md:block lg:block'>
           <ul className='flex gap-10 '>
             <li key="home"><Link href="/">Home</Link></li>
-            <li key="explore">Explore</li>
+            <li key="explore"><Link href="/explore">Explore</Link></li>
             <li key="contact">Contact</li>
           </ul>
         </div>

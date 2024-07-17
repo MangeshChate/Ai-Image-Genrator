@@ -60,6 +60,26 @@
   }
 }
 
+
+/* styles/globals.css */
+.masonry {
+  column-count: 2; /* default to 2 columns */
+  column-gap: 16px;   /* no gap between columns */
+}
+
+.masonry > div {
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+.masonry img {
+  width: 100%;
+  display: block;
+  margin-bottom: 16px;
+}
+
+
+
 @layer base {
   * {
     @apply border-border;

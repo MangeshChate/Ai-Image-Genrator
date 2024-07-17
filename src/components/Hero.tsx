@@ -4,6 +4,8 @@ import hero from "../../public/stock/hero.jpg";
 import hero2 from "../../public/stock/hero2.jpg";
 import hero3 from "../../public/stock/hero3.png";
 import hero4 from "../../public/stock/hero4.avif";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 const Hero = () => {
     return (
@@ -17,6 +19,12 @@ const Hero = () => {
                     <span className="text-5xl lg:text-7xl font-bold">Stunning Visuals</span>
                     <p className="hidden lg:block text-sm lg:text-lg w-[40%] ms-6 ">Introducing PurpleAi, the Genrative Ai image for brings your ideas to life perfectly match & unique visuals.</p>
                 </div>
+                <div className="mt-5 block lg:hidden md:hidden ">
+                    <Link href="/explore">
+                    <Button className="text-mono  ">Explore</Button>
+                    </Link>
+                </div>
+
                 <div className="grid grid-cols-3 lg:h-full h-[400px] lg:p-5 lg:gap-5 gap-2 mt-5 ">
                     <div className="">
                         <Image src={hero2} alt="hero-1.png" className="h-[70%] object-cover rounded-2xl shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl" />
