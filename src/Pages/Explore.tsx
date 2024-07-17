@@ -9,7 +9,7 @@ const Explore = () => {
             <Navbar />
             <Spline
                 scene="https://prod.spline.design/aXjJzvrcAolXYZAW/scene.splinecode"
-                className='absolute -z-10'
+                className='absolute -z-10 hidden lg:block md:block'
             />
             <div className=" p-5 mt-10 container ">
                 <div className=" lg:mb-10 flex flex-wrap">
