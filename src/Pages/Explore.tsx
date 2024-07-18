@@ -1,12 +1,32 @@
+"use client"
 import Spline from '@splinetool/react-spline';
 import ImageGrid from "@/components/ImageGrid"
 import Navbar from "@/components/Navbar"
 import '../app/globals.css';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
+import { useCallback, useEffect, useState } from 'react';
+import app from '../../config';
 
 const Explore = () => {
+    const auth = getAuth(app);
+    const router = useRouter();
+    const [user, setUser] = useState<any | null>(null);
+  
+    const handleAuthChange = useCallback((user: any | null) => {
+      if (user) {
+        setUser(user);
+      } 
+    }, [router]);
+  
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, handleAuthChange);
+      return () => unsubscribe();
+    }, [auth, handleAuthChange]);
+  
     return (
         <div>
-            <Navbar />
+            <Navbar user={user}/>
             <Spline
                 scene="https://prod.spline.design/aXjJzvrcAolXYZAW/scene.splinecode"
                 className='absolute -z-10 hidden lg:block md:block'

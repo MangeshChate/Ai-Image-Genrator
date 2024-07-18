@@ -61,10 +61,10 @@
 }
 
 
-/* styles/globals.css */
+
 .masonry {
-  column-count: 2; /* default to 2 columns */
-  column-gap: 16px;   /* no gap between columns */
+  column-count: 2;
+  column-gap: 16px;  
 }
 
 .masonry > div {
@@ -76,6 +76,14 @@
   width: 100%;
   display: block;
   margin-bottom: 16px;
+}
+.black-morphism {
+  
+background: rgba(0, 0, 0, 0.55);
+
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(16px);
 }
 
 
