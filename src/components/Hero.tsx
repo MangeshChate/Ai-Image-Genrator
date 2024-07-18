@@ -38,7 +38,7 @@ const Hero = () => {
 
                     </div>
                     <div>
-                        <Image src={hero3} alt="hero-4.png" className="h-[70%] object-cover rounded-2xl shadow shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl" />
+                        <Image src={hero3} alt="hero-4.png" className="h-[70%] object-cover rounded-2xl  shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl" />
 
                     </div>
 
