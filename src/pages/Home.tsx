@@ -37,7 +37,7 @@ const Home = () => {
 
     <HomeExplore/>
     <Testamonial/>
-    <Footer/>
+    
     
     </div>
   )
