@@ -1,11 +1,12 @@
+import { DashboardProvider } from '@/contexts/DashboardContext'
 import Dashboard from '@/pages/Dashboard'
 
 
 const DashboardPage = () => {
   return (
-    <div>
+    <DashboardProvider>
       <Dashboard/>
-    </div>
+    </DashboardProvider>
   )
 }
 
