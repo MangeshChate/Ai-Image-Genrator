@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Navbar from '@/components/Navbar';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -7,33 +7,52 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import app from '../../config';
+import { setSession } from '../services/apiService'; 
+import toast from 'react-hot-toast';
 
 const SignIn = () => {
     const [user, setUser] = useState<any>(null);
+    const [loading, setLoading] = useState<boolean>(false); // Loading state
     const router = useRouter();
     
-    useEffect(()=>{
+    useEffect(() => {
         const auth = getAuth(app);
-        const unsubscribe = auth.onAuthStateChanged((user)=>{
-            if(user){
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (user) {
                 setUser(user);
-            }else{
+            } else {
                 setUser(null);
             }
         });
 
         return () => unsubscribe();
-    },[]);
+    }, []);
 
     const handleGoogleSignIn = async () => {
         const provider = new GoogleAuthProvider();
         const auth = getAuth(app);
+        setLoading(true); // Set loading to true
         try {
             const result = await signInWithPopup(auth, provider);
-            
-            router.push('/dashboard'); // Redirect to home page after sign-in
-        } catch (error:any) {
+            const user = result.user;
+
+            if (user) {
+                // Initialize session data
+                const sessionData = {
+                    lastLogin: new Date().toISOString(),
+                    
+                };
+
+                // Save session data
+                await setSession(user.uid, sessionData);
+                toast.success("session saved !")
+
+                router.push('/dashboard'); // Redirect to dashboard after sign-in
+            }
+        } catch (error: any) {
             console.error("Error signing in with Google", error.message);
+        } finally {
+            setLoading(false); // Reset loading state
         }
     };
 
@@ -58,7 +77,9 @@ const SignIn = () => {
                                 <span className='font-bold text-2xl'>PurpleAi</span>
                             </Link>
                             <span className='text-sm'>Sign in to create your first image</span>
-                            <Button className="w-[75%]" onClick={handleGoogleSignIn}>LogIn with Google</Button>
+                            <Button className="w-[75%]" onClick={handleGoogleSignIn} disabled={loading}>
+                                {loading ? 'Signing In...' : 'Log In with Google'}
+                            </Button>
                         </div>
                     </div>
                 </div>

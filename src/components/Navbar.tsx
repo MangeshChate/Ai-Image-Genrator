@@ -21,7 +21,7 @@ const Navbar: React.FC<PropType> = ({user}) => {
   const [fallback, setFallback] = useState<string>('');
 
   useEffect(() => {
-    console.log(user);
+ 
     if (user?.displayName) {
       setFallback(user.displayName.slice(0, 2));
     }
@@ -78,6 +78,7 @@ const Navbar: React.FC<PropType> = ({user}) => {
                 <DropdownMenuContent className="w-56">
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  <Link href={"/profile"}>
                   <DropdownMenuItem className="cursor-pointer py-5">
                     <User className="mr-2 h-4 w-4" />
                     <span>
@@ -85,6 +86,7 @@ const Navbar: React.FC<PropType> = ({user}) => {
                     </span>
                     
                   </DropdownMenuItem>
+                  </Link>
                   <DropdownMenuItem className="cursor-pointer py-5">
                     <Settings className="mr-2 h-4 w-4" />
                     <span>Settings</span>

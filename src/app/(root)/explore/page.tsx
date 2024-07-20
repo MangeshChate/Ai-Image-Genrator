@@ -1,4 +1,4 @@
-import Explore from "@/Pages/Explore"
+import Explore from "@/pages/Explore"
 
 
 const ExplorePage = () => {

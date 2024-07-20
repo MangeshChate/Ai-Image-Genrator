@@ -29,7 +29,7 @@ const Dashboard = () => {
     return () => unsubscribe();
   }, [auth, handleAuthChange]);
 
-  
+ 
   return (
     <div>
       <Navbar user={user}  />

@@ -1,4 +1,4 @@
-import Dashboard from '@/Pages/Dashboard'
+import Dashboard from '@/pages/Dashboard'
 
 
 const DashboardPage = () => {
