@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from './ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const HomeExplore = () => {
   return (
@@ -15,9 +16,11 @@ const HomeExplore = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-purple-950 opacity-95"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-16 z-10">
           <h2 className="text-3xl lg:text-7xl font-bold text-white mb-6">Explore Our World</h2>
-          <Button className="p-5 text-2xl font-bold px-5 border-4 border-white">
+          <Link href="explore">
+          <Button className="p-5 text-2xl font-bold px-5 border-2 border-white">
             Explore Now
           </Button>
+          </Link>
         </div>
       </div>
     </div>
