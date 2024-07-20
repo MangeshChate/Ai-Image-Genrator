@@ -14,19 +14,20 @@ import { Download } from 'lucide-react';
 
 const auth = getAuth(app);
 
-const Dashboard_Left: React.FC = () => {
+const DashboardLeft: React.FC = () => {
   const context = useContext(DashboardContext);
   if (!context) {
     throw new Error('DashboardLeft must be used within a DashboardProvider');
   }
 
-  const { selectedPrompt, setSelectedPrompt ,selectedRatio} = context;
+  const { selectedPrompt, setSelectedPrompt, selectedRatio } = context;
 
   const [prompt, setPrompt] = useState<string>(selectedPrompt || '');
   const [selectedImage, setSelectedImage] = useState<string>('');
   const [user, setUser] = useState<any | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [ratio, setRatio] = useState<string>("9:16"); // Added ratio state
+  const [ratio, setRatio] = useState<string>('9:16'); // Added ratio state
+  const [containerStyle, setContainerStyle] = useState<React.CSSProperties>({});
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -37,8 +38,38 @@ const Dashboard_Left: React.FC = () => {
 
   useEffect(() => {
     setPrompt(selectedPrompt || '');
-    setRatio(selectedRatio || "9:16")
-  }, [selectedPrompt ,selectedRatio]);
+    setRatio(selectedRatio || '9:16');
+  }, [selectedPrompt, selectedRatio]);
+
+  useEffect(() => {
+    const getContainerStyle = () => {
+      const ratios: any = {
+        '9:16': { width: 9, height: 16 },
+        '3:4': { width: 3, height: 4 },
+        '1:1': { width: 1, height: 1 },
+      };
+
+      const ratioDimensions = ratios[ratio];
+
+      if (!ratioDimensions) {
+        console.error('Invalid ratio provided');
+        return {};
+      }
+
+      const aspectRatio = ratioDimensions.width / ratioDimensions.height;
+      const defaultHeight = window.innerWidth < 768 ? 200 : 600;
+      const calculatedWidth = defaultHeight / aspectRatio;
+
+      return {
+        width: `${calculatedWidth}px`,
+        height: `${defaultHeight}px`,
+      };
+    };
+
+    if (typeof window !== 'undefined') {
+      setContainerStyle(getContainerStyle());
+    }
+  }, [ratio]);
 
   const handleLogin = async () => {
     try {
@@ -108,30 +139,6 @@ const Dashboard_Left: React.FC = () => {
     setSelectedPrompt(newPrompt); // Update the context
   };
 
-
-  const getContainerStyle = () => {
-    const ratios: any = {
-      '9:16': { width: 9, height: 16 },
-      '3:4': { width: 3, height: 4 },
-      '1:1': { width: 1, height: 1 }
-    };
-
-    const ratioDimensions = ratios[ratio];
-
-    if (!ratioDimensions) {
-      console.error('Invalid ratio provided');
-      return {};
-    }
-
-    const aspectRatio = ratioDimensions.width / ratioDimensions.height;
-    const defaultHeight = window.innerWidth < 768 ? 200 : 600;  
-    const calculatedWidth = defaultHeight / aspectRatio;
-
-    return {
-      width: `${calculatedWidth}px`,
-      height: `${defaultHeight}px`
-    };
-  };
   const handleDownload = () => {
     if (selectedImage) {
       const link = document.createElement('a');
@@ -142,13 +149,14 @@ const Dashboard_Left: React.FC = () => {
       toast.error('No image to download.');
     }
   };
+
   return (
-    <div className='lg:p-3 pt-3 pb-3 lg:pt-auto lg:pb-auto p-suto'>
-      <div className='flex gap-3 p-3 border rounded-xl'>
+    <div className="lg:p-3 pt-3 pb-3 lg:pt-auto lg:pb-auto p-suto">
+      <div className="flex gap-3 p-3 border rounded-xl">
         <Input
-          type='text'
-          placeholder='Describe your image, get playful'
-          className='border-0 lg:text-lg text-sm'
+          type="text"
+          placeholder="Describe your image, get playful"
+          className="border-0 lg:text-lg text-sm"
           value={prompt}
           onChange={handlePromptChange}
         />
@@ -157,28 +165,26 @@ const Dashboard_Left: React.FC = () => {
         </Button>
       </div>
 
-
-
-      <Card className='p-3 flex justify-center items-center mt-5 lg:w-[960px] lg:h-[660px] w-[360] h-[260]'>
-        <div className='bg-[#1E1C28] rounded-xl relative' style={getContainerStyle()}>
-          {selectedImage &&
+      <Card className="p-3 flex justify-center items-center mt-5 lg:w-[960px] lg:h-[660px] ">
+        <div className="bg-[#1E1C28] rounded-xl relative" style={containerStyle}>
+          {selectedImage && (
             <button
-              className='absolute cursor-pointer top-3 right-3 text-white'
+              className="absolute cursor-pointer top-3 right-3 text-white"
               onClick={handleDownload}
-              aria-label='Download Image'
+              aria-label="Download Image"
             >
               <Download />
             </button>
-          }
+          )}
           {selectedImage ? (
             <img
               src={`/stock/${selectedImage}`}
-              alt='Generated'
-              className='max-w-full max-h-full rounded-xl w-full h-full object-cover'
+              alt="Generated"
+              className=" rounded-xl w-full h-full object-cover"
             />
           ) : (
-            <div className='h-full w-full flex justify-center items-center'>
-              <p className='text-white text-sm lg:text-lg '>Image will appear here</p>
+            <div className="h-full w-full flex justify-center items-center">
+              <p className="text-white text-sm lg:text-lg">Image will appear here</p>
             </div>
           )}
         </div>
@@ -187,4 +193,4 @@ const Dashboard_Left: React.FC = () => {
   );
 };
 
-export default Dashboard_Left;
+export default DashboardLeft;
