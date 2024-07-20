@@ -7,6 +7,7 @@ import app from "../../config";
 import { useCallback, useEffect, useState } from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import ScrollContent from "@/components/ScrollContent";
+import HomeExplore from "@/components/HomeExplore";
 
 const Home = () => {
   const auth = getAuth(app);
@@ -28,10 +29,12 @@ const Home = () => {
     <div className="overflow-hidden">
     <Navbar user={user}/>
     <Hero/>
-    <div className="mb-[500px]">
+    
 
     <ContainerScroll titleComponent={<ScrollContent/>} children={<img src="/dashBg.png" alt="dashboard_img" className="w-full h-full object-cover"></img>} />
-    </div>
+
+    <HomeExplore/>
+    
     </div>
   )
 }

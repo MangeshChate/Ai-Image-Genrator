@@ -20,8 +20,8 @@ const ScrollContent = () => {
             <div className="lg:hidden md:hidden block h-[250px] mt-5  border-4 border-[#6C6C6C] p-2 bg-[#222222] rounded-[30px] shadow-2xl ">
 
 
-                <div className=" h-full w-full  overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl  p-3">
-                    <img src="/dashBg.png" alt="expo_jpg" className='w-full h-full object-cover'/>
+                <div className=" h-full w-full  overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl  p-3 px-5">
+                    <img src="/dashBg.png" alt="expo_jpg" className='w-full h-full object-cover rounded-lg '/>
                 </div>
 
             </div>
