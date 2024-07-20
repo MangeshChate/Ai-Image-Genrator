@@ -1,5 +1,5 @@
 'use client';
-
+import { DashboardProvider } from '@/contexts/DashboardContext'
 import Dashboard_Left from '@/components/Dashboard_Left';
 import Dashboard_Right from '@/components/Dashboard_Right';
 import Navbar from '@/components/Navbar';
@@ -31,7 +31,7 @@ const Dashboard = () => {
 
  
   return (
-    <div>
+    <DashboardProvider>
       <Navbar user={user}  />
       <Card className='container h-auto lg:h-[85vh] gap-5 mt-5 grid grid-cols-12 pb-5'>
         <div className='col-span-12 lg:col-span-9 h-full'>
@@ -41,7 +41,7 @@ const Dashboard = () => {
           <Dashboard_Right />
         </div>
       </Card>
-    </div>
+    </DashboardProvider>
   );
 };
 
