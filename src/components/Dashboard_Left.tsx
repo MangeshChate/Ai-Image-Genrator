@@ -86,10 +86,7 @@ const Dashboard_Left = () => {
   
   return (
     <div className='lg:p-3 pt-3 pb-3 lg:pt-auto lg:pb-auto p-suto'>
-      {!user ? (
-        <Button onClick={handleLogin}>Login with Google</Button>
-      ) : (
-        <>
+      
           <div className='flex gap-3 p-3 border rounded-xl'>
             <Input
               type='text'
@@ -102,8 +99,8 @@ const Dashboard_Left = () => {
               {loading ? 'Generating...' : 'Generate'}
             </Button>
           </div>
-        </>
-      )}
+        
+      
 
       <Card className='p-3 flex justify-center items-center mt-5'>
         <div className='bg-[#1E1C28] lg:w-[900px] lg:h-[650px] w-[300px] h-[200px] rounded-xl'>
