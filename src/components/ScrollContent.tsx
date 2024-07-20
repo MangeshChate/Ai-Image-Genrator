@@ -14,7 +14,15 @@ const ScrollContent = () => {
                     </span> Images like a
                     pro without being one.
                 </span>
-                <p className='lg:text-xl  text-sm'>Discover the power of Alpha Gen AI Modal.  </p>
+                <p className='lg:text-xl hidden lg:blcok md:block  text-sm'>Discover the power of Alpha Gen AI Modal.  </p>
+
+            </div>
+            <div className="lg:hidden md:hidden block h-[250px] mt-5  border-4 border-[#6C6C6C] p-2 bg-[#222222] rounded-[30px] shadow-2xl ">
+
+
+                <div className=" h-full w-full  overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl  p-3">
+                    <img src="/dashBg.png" alt="expo_jpg" className='w-full h-full object-cover'/>
+                </div>
 
             </div>
         </div>
