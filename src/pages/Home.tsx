@@ -9,6 +9,7 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import ScrollContent from "@/components/ScrollContent";
 import HomeExplore from "@/components/HomeExplore";
 import Testamonial from "@/components/Testamonial";
+import Footer from "@/components/Footer";
 
 const Home = () => {
   const auth = getAuth(app);
@@ -36,6 +37,7 @@ const Home = () => {
 
     <HomeExplore/>
     <Testamonial/>
+    <Footer/>
     
     </div>
   )
