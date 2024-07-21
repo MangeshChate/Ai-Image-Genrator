@@ -1,4 +1,4 @@
-const API_BASE_URL =  'https://ai-image-genrator-seven.vercel.app/api' ;
+const API_BASE_URL =  'http://localhost:3000/api' ;
 // "https://ai-image-genrator-seven.vercel.app/api"
 
 // src/services/apiService.ts
