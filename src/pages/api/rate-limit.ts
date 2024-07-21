@@ -3,8 +3,8 @@ import { kv } from '@vercel/kv';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const RATE_LIMIT = 3;
-// const PERIOD = 60 * 60 * 1000; 
-const PERIOD = 15 * 1000;
+const PERIOD = 60 * 60 * 1000; 
+// const PERIOD = 15 * 1000;
 
 export default async function handler(
   req: NextApiRequest,
