@@ -1,0 +1,7 @@
+To Run This Project To An Local Enviroment
+you need to change API_BASE_URL to the localhost
+
+location : src/services/apiService
+localhost URL = http://localhost:3000/api 
+
+Hope, This will work well :D
