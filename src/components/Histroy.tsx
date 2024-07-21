@@ -2,10 +2,11 @@
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { getHistory } from '../services/apiService';
+import { Download } from 'lucide-react';
 
 interface imgData {
     image: string;
-    prompt?: string; 
+    prompt?: string;
 }
 
 type PropType = {
@@ -16,7 +17,7 @@ const History: React.FC<PropType> = ({ userInfo }) => {
     const [columns, setColumns] = useState<number>(2);
     const [images, setImages] = useState<imgData[]>([]);
     const [error, setError] = useState<string | null>(null);
-    
+
     useEffect(() => {
         const fetchHistory = async () => {
             if (!userInfo) {
@@ -27,7 +28,7 @@ const History: React.FC<PropType> = ({ userInfo }) => {
                 const userId = userInfo.uid;
                 const historyData = await getHistory(userId);
 
-                
+
                 const formattedData = historyData.map((filename: string) => ({ image: filename }));
 
                 setImages(formattedData);
@@ -44,6 +45,14 @@ const History: React.FC<PropType> = ({ userInfo }) => {
     const changeColumns = (num: number) => {
         setColumns(num);
         document.documentElement.style.setProperty('--column-count', num.toString());
+    };
+    const handleDownload = (filename: string) => {
+        const link = document.createElement('a');
+        link.href = `/stock/${filename}`;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     return (
@@ -90,12 +99,16 @@ const History: React.FC<PropType> = ({ userInfo }) => {
             <div className="masonry" style={{ columnCount: columns }}>
                 {error && <p className="text-red-500">{error}</p>}
                 {images.map((img: imgData, index: number) => (
-                    <div key={index} className="column relative shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl w-full">
+                    <div key={index} className="column relative shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl w-full group">
                         {img && (
                             <>
                                 <img src={`/stock/${img.image}`} alt={`Image ${index}`} className="rounded-lg" />
-                                <div className="absolute inset-0 bg-black bg-opacity-50 text-white text-center py-2 opacity-0  transition-opacity duration-500 ease-in-out">
-                                    
+                                
+                                
+                                    <Download className='absolute top-2 right-2 rounded transition-colors duration-300 opacity-0 group-hover:opacity-100 z-30 cursor-pointer' onClick={() => handleDownload(img.image)}/>
+                              
+                                <div className="absolute inset-0 bg-black bg-opacity-50 text-white text-center py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
+
                                 </div>
                             </>
                         )}

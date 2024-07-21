@@ -12,7 +12,15 @@ const Hero = () => {
         <div className='container  pt-5 '>
             <div className='lg:p-5 p-2 '>
                 <div className="flex items-center lg:gap-3 flex-wrap">
-                    <span className="text-5xl lg:text-7xl font-bold" >Genrate Your Ideas Into </span>
+                    <div className="text-5xl lg:text-7xl font-bold" >
+                        <span className="grid-text me-3">
+
+                            Generate
+                        </span> <br className="lg:hidden md:hidden block" />
+                        <span>
+                            Your Ideas Into
+                        </span>
+                    </div>
                     <span className="hidden sm:hidden md:hidden lg:block">
                         <Image src={heroHeader} alt="hero-header.png" className="rounded-full h-[110px] w-[300px] object-cover object-center" />
                     </span>

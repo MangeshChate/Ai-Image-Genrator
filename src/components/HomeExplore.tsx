@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const HomeExplore = () => {
   return (
-    <div className="lg:mt-[400px] relative px-5">
+    <div className="lg:mt-[400px] relative lg:px-5">
       <div 
         className="h-screen relative rounded-t-[50px] rounded-b-[50px]  overflow-hidden group"
       >

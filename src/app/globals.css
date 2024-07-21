@@ -92,6 +92,15 @@ background-size: 32px 32px;
 
 }
 
+.grid-text{
+
+
+  background-image: radial-gradient(#d2fd11 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+
+
+}
+
 
 @layer base {
   * {

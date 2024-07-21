@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useState, useEffect } from "react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from "./ui/dropdown-menu";
-import { HelpCircle, LogOut, Settings, User } from "lucide-react";
+import { HelpCircle, Link2, LogOut, Settings, User } from "lucide-react";
 import { getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import app from "../../config";
@@ -15,13 +15,13 @@ type PropType = {
   user: any
 }
 
-const Navbar: React.FC<PropType> = ({user}) => {
+const Navbar: React.FC<PropType> = ({ user }) => {
   const auth = getAuth(app);
   const router = useRouter();
   const [fallback, setFallback] = useState<string>('');
 
   useEffect(() => {
- 
+
     if (user?.displayName) {
       setFallback(user.displayName.slice(0, 2));
     }
@@ -31,15 +31,15 @@ const Navbar: React.FC<PropType> = ({user}) => {
     try {
       await auth.signOut();
       router.push('/');
-    } catch (error:any) {
-      
+    } catch (error: any) {
+
       console.error(error.message);
     }
   };
 
 
 
-  
+
 
   return (
     <div>
@@ -52,18 +52,22 @@ const Navbar: React.FC<PropType> = ({user}) => {
           <ul className='flex gap-10 '>
             <li key="home"><Link href="/">Home</Link></li>
             <li key="explore"><Link href="/explore">Explore</Link></li>
-            <li key="contact">Contact</li>
+            <li key="contact">
+              <Link href="https://mangeshchate.netlify.app/" target="_blank">
+                About
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div className='flex gap-4'>
-         
-          
+
+
           <Link href={"/dashboard"} className="hidden md:block sm:hidden lg:block">
             <Button className='bg-transparent border-2 rounded-lg border-purple-800'>Let's Generate</Button>
           </Link>
-          
-          
+
+
           {user ? (
             <div>
               <DropdownMenu>
@@ -79,30 +83,32 @@ const Navbar: React.FC<PropType> = ({user}) => {
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <Link href={"/profile"}>
-                  <DropdownMenuItem className="cursor-pointer py-5">
-                    <User className="mr-2 h-4 w-4" />
-                    <span>
-                      {user ? <span className="truncate">{user?.displayName}</span> : <>Profile</>}
-                    </span>
-                    
-                  </DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer py-5">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>
+                        {user ? <span className="truncate">{user?.displayName}</span> : <>Profile</>}
+                      </span>
+
+                    </DropdownMenuItem>
                   </Link>
-                  <DropdownMenuItem className="cursor-pointer py-5">
-                    <Settings className="mr-2 h-4 w-4" />
-                    <span>Settings</span>
-                    
-                  </DropdownMenuItem>
+                  <Link href="https://mangeshchate.netlify.app/" target="_blank">
+                    <DropdownMenuItem className="cursor-pointer py-5">
+                      <Link2 className="mr-2 h-4 w-4" />
+                      <span>About</span>
+
+                    </DropdownMenuItem>
+                  </Link>
 
                   <DropdownMenuItem className="cursor-pointer py-5">
                     <HelpCircle className="mr-2 h-4 w-4" />
                     <span>Help</span>
-                    
+
                   </DropdownMenuItem>
-                  <DropdownMenuSeparator/>
-                  <DropdownMenuItem className="cursor-pointer" onClick={()=>handleLogout()}>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="cursor-pointer" onClick={() => handleLogout()}>
                     <LogOut className="mr-2 h-4 w-4 text-red-500 " />
                     <span className="text-red-500">Log Out</span>
-                    
+
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -115,7 +121,7 @@ const Navbar: React.FC<PropType> = ({user}) => {
             </div>
           )}
 
-          
+
         </div>
       </div>
     </div>
