@@ -5,6 +5,10 @@
 
 This project is an AI-powered image generation web application built with Next.js. It features a unique and intuitive user interface, allowing users to create AI-generated images with ease.
 
+## Screenshot
+
+![AI Image Generator Screenshot](/dashBg.png)
+
 ## Features
 
 - **Unique User Interface**: Clean, intuitive, and responsive design created using Next.js and shadcn/ui.
