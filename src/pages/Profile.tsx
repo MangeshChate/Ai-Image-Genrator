@@ -23,7 +23,7 @@ const Profile = () => {
       const unsubscribe = onAuthStateChanged(auth, handleAuthChange);
       return () => unsubscribe();
     }, [auth, handleAuthChange]);
-  
+  console.log(user)
     return (
         <div>
             <Navbar user={user}/>
@@ -31,11 +31,13 @@ const Profile = () => {
             <div className=" p-5 mt-10 container ">
                 <div className=" lg:mb-10 flex flex-wrap">
 
-                    <span className=" text-5xl lg:text-7xl lg:p-3 p-0 font-bold">
-                        Welcome, Mangesh Chate
+                    <span className=" lg:p-3 p-0  justify-center flex w-full flex-col items-center">
+                        <img src={user?.photoURL} alt="profile_picture" className='rounded-full border-4 border-purple-600 lg:w-[150px]' />
+                        <span className='mt-3 font-bold text-xl lg:text-2xl'>{user?.displayName}</span>
+                        <span className="text-secondary text-purple-400">{user?.email}</span>
                     </span>
 
-                    <span className="hidden lg:block md:block p-3 text-sm  lg:text-3xl underline">Easy to create, Safe to use.  Licensed.</span>
+                    
                 </div>
 
                 <div className="">

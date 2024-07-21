@@ -94,10 +94,8 @@ const History: React.FC<PropType> = ({ userInfo }) => {
                         {img && (
                             <>
                                 <img src={`/stock/${img.image}`} alt={`Image ${index}`} className="rounded-lg" />
-                                <div className="absolute inset-0 bg-black bg-opacity-50 text-white text-center py-2 opacity-0 hover:opacity-100 transition-opacity duration-500 ease-in-out">
-                                    <span className='absolute bottom-3 left-0 right-0 text-xl'>
-                                        {img.prompt || 'No description available'}
-                                    </span>
+                                <div className="absolute inset-0 bg-black bg-opacity-50 text-white text-center py-2 opacity-0  transition-opacity duration-500 ease-in-out">
+                                    
                                 </div>
                             </>
                         )}
