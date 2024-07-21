@@ -55,7 +55,7 @@ const Dashboard_Right = () => {
     }
 
     return (
-        <div className='lg:p-3 p-auto lg:h-[96%] '>
+        <div className='lg:p-3 p-auto h-full '>
             <Card className='h-full'>
                 <div className='flex justify-center flex-col'>
                     <CardHeader>Custom Prompts</CardHeader>
@@ -102,7 +102,7 @@ const Dashboard_Right = () => {
                             <Trash2 className='top-4 right-5 absolute cursor-pointer text-red-400' onClick={() => setImageSrc(null)} />
                         }
                         <Card
-                            className='flex justify-center border border-dashed w-full h-[110px] items-center cursor-pointer '
+                            className='flex justify-center border border-dashed w-full h-[5rem]  items-center cursor-pointer '
                             onClick={handleCardClick}
                         >
                             {imageSrc ? (

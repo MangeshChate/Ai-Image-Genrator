@@ -33,7 +33,7 @@ const Dashboard = () => {
   return (
     <DashboardProvider>
       <Navbar user={user}  />
-      <Card className='container h-auto lg:h-[85vh] gap-5 mt-5 grid grid-cols-12 pb-5'>
+      <Card className='container  h-full gap-5 mt-5 grid grid-cols-12 pb-5'>
         <div className='col-span-12 lg:col-span-9 h-full'>
           <Dashboard_Left />
         </div>

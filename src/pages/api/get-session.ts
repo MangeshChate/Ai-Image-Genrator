@@ -1,4 +1,4 @@
-// src/pages/api/get-session.ts
+
 import { kv } from '@vercel/kv';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -31,7 +31,7 @@ export default async function handler(
           return res.status(500).json({ error: 'Invalid session data format' });
         }
       } else if (typeof sessionData === 'object') {
-        // If the data is already an object, return it directly
+        
         return res.status(200).json(sessionData);
       } else {
         console.log('Unexpected session data type:', typeof sessionData, 'Value:', sessionData);

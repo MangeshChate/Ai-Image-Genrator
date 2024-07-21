@@ -1,4 +1,4 @@
-// src/pages/api/rate-limit.ts
+
 import { kv } from '@vercel/kv';
 import type { NextApiRequest, NextApiResponse } from 'next';
 

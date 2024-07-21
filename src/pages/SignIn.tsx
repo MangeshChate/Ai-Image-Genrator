@@ -31,28 +31,28 @@ const SignIn = () => {
     const handleGoogleSignIn = async () => {
         const provider = new GoogleAuthProvider();
         const auth = getAuth(app);
-        setLoading(true); // Set loading to true
+        setLoading(true); 
         try {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
 
             if (user) {
-                // Initialize session data
+                
                 const sessionData = {
                     lastLogin: new Date().toISOString(),
                     
                 };
 
-                // Save session data
+                
                 await setSession(user.uid, sessionData);
                 toast.success("session saved !")
 
-                router.push('/dashboard'); // Redirect to dashboard after sign-in
+                router.push('/dashboard'); 
             }
         } catch (error: any) {
             console.error("Error signing in with Google", error.message);
         } finally {
-            setLoading(false); // Reset loading state
+            setLoading(false);
         }
     };
 

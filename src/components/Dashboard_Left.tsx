@@ -26,7 +26,7 @@ const DashboardLeft: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string>('');
   const [user, setUser] = useState<any | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [ratio, setRatio] = useState<string>('9:16'); // Added ratio state
+  const [ratio, setRatio] = useState<string>('9:16'); 
   const [containerStyle, setContainerStyle] = useState<React.CSSProperties>({});
 
   useEffect(() => {
@@ -92,11 +92,11 @@ const DashboardLeft: React.FC = () => {
         const userId = user.uid;
         console.log(userId);
 
-        // Fetch session data
+        
         const sessionData = await getSession(userId);
         console.log('Fetched session data:', sessionData);
 
-        // Check rate limit
+       
         const rateLimitResponse = await checkRateLimit(userId);
         if (!rateLimitResponse.allowed) {
           toast.error('Rate limit exceeded. Try again later.');
@@ -104,14 +104,14 @@ const DashboardLeft: React.FC = () => {
           return;
         }
 
-        // Generate image
+        
         const randomIndex = Math.floor(Math.random() * imgdata.length);
         const randomImage = imgdata[randomIndex]?.image;
 
         if (randomImage) {
           setSelectedImage(randomImage);
 
-          // Save image generation history
+          
           const saveResponse = await saveHistory(userId, randomImage);
           console.log('Save history response:', saveResponse);
           toast.success('Generated Image Saved In Profile!');
@@ -136,7 +136,7 @@ const DashboardLeft: React.FC = () => {
   const handlePromptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newPrompt = e.target.value;
     setPrompt(newPrompt);
-    setSelectedPrompt(newPrompt); // Update the context
+    setSelectedPrompt(newPrompt); 
   };
 
   const handleDownload = () => {
@@ -151,7 +151,7 @@ const DashboardLeft: React.FC = () => {
   };
 
   return (
-    <div className="lg:p-3 pt-3 pb-3 lg:pt-auto lg:pb-auto p-suto">
+    <div className="lg:p-3 pt-3 pb-3 lg:pt-auto lg:pb-auto p-auto  ">
       <div className="flex gap-3 p-3 border rounded-xl">
         <Input
           type="text"
@@ -165,7 +165,7 @@ const DashboardLeft: React.FC = () => {
         </Button>
       </div>
 
-      <Card className="p-3 flex justify-center items-center mt-5 lg:w-[960px] lg:h-[660px] ">
+      <Card className="p-3 flex justify-center items-center mt-5 w-full h-full ">
         <div className="bg-[#1E1C28] rounded-xl relative" style={containerStyle}>
           {selectedImage && (
             <button

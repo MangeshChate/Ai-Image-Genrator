@@ -1,4 +1,4 @@
-// src/pages/api/get-history.ts
+
 import { kv } from '@vercel/kv';
 import type { NextApiRequest, NextApiResponse } from 'next';
 

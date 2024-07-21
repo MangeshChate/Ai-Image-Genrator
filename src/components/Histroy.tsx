@@ -5,7 +5,7 @@ import { getHistory } from '../services/apiService';
 
 interface imgData {
     image: string;
-    prompt?: string; // prompt may not be available
+    prompt?: string; 
 }
 
 type PropType = {
@@ -27,7 +27,7 @@ const History: React.FC<PropType> = ({ userInfo }) => {
                 const userId = userInfo.uid;
                 const historyData = await getHistory(userId);
 
-                // Adjust here if historyData is just filenames
+                
                 const formattedData = historyData.map((filename: string) => ({ image: filename }));
 
                 setImages(formattedData);
