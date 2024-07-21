@@ -7,7 +7,7 @@ This project is an AI-powered image generation web application built with Next.j
 
 ## Screenshot
 
-![AI Image Generator Screenshot](/dashBg.png)
+![AI Image Generator Screenshot](./public/dashBg.png)
 
 ## Features
 
