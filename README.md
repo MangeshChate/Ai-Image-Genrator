@@ -60,5 +60,5 @@ This project is configured for easy deployment on Vercel or Render. Follow the p
 
 
 
-## License
+
 
