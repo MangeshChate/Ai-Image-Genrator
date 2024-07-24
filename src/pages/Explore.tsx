@@ -28,6 +28,7 @@ const Explore = () => {
         <div>
             <Navbar user={user}/>
            
+                
             <div className=" p-5 mt-10 container ">
                 <div className=" lg:mb-10 flex flex-wrap">
 
