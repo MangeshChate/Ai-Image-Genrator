@@ -1,5 +1,5 @@
 "use client"
-import Spline from '@splinetool/react-spline';
+
 import ImageGrid from "@/components/ImageGrid"
 import Navbar from "@/components/Navbar"
 import '../app/globals.css';
@@ -27,10 +27,7 @@ const Explore = () => {
     return (
         <div>
             <Navbar user={user}/>
-            <Spline
-                scene="https://prod.spline.design/aXjJzvrcAolXYZAW/scene.splinecode"
-                className='absolute -z-10 hidden lg:block md:block'
-            />
+           
             <div className=" p-5 mt-10 container ">
                 <div className=" lg:mb-10 flex flex-wrap">
 
