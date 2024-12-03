@@ -29,7 +29,7 @@ const Navbar: React.FC<PropType> = ({ user }) => {
 
   const handleLogout = async () => {
     try {
-      await auth.signOut();
+       auth.signOut();
       router.push('/');
     } catch (error: any) {
 

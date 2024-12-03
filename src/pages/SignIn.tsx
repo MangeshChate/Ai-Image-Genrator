@@ -7,14 +7,14 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import app from '../../config';
-import { setSession } from '../services/apiService'; 
+import { setSession } from '../services/apiService';
 import toast from 'react-hot-toast';
 
 const SignIn = () => {
     const [user, setUser] = useState<any>(null);
     const [loading, setLoading] = useState<boolean>(false); // Loading state
     const router = useRouter();
-    
+
     useEffect(() => {
         const auth = getAuth(app);
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -29,25 +29,28 @@ const SignIn = () => {
     }, []);
 
     const handleGoogleSignIn = async () => {
+
+
+
         const provider = new GoogleAuthProvider();
         const auth = getAuth(app);
-        setLoading(true); 
+        setLoading(true);
         try {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
 
             if (user) {
-                
+
                 const sessionData = {
                     lastLogin: new Date().toISOString(),
-                    
+
                 };
 
-                
-                await setSession(user.uid, sessionData);
+
+                setSession(user.uid, sessionData);
                 toast.success("session saved !")
 
-                router.push('/dashboard'); 
+                router.push('/dashboard');
             }
         } catch (error: any) {
             console.error("Error signing in with Google", error.message);

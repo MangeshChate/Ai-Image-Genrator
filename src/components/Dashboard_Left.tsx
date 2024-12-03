@@ -1,5 +1,4 @@
-'use client'; // Add this line if not already present
-
+'use client'; 
 import React, { useState, useEffect, useContext } from 'react';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
@@ -89,20 +88,7 @@ const DashboardLeft: React.FC = () => {
     if (prompt) {
       setLoading(true);
       try {
-        const userId = user.uid;
-        console.log(userId);
-
         
-        const sessionData = await getSession(userId);
-        console.log('Fetched session data:', sessionData);
-
-       
-        const rateLimitResponse = await checkRateLimit(userId);
-        if (!rateLimitResponse.allowed) {
-          toast.error('Rate limit exceeded. Try again later.');
-          setLoading(false);
-          return;
-        }
 
         
         const randomIndex = Math.floor(Math.random() * imgdata.length);
@@ -110,15 +96,7 @@ const DashboardLeft: React.FC = () => {
 
         if (randomImage) {
           setSelectedImage(randomImage);
-
           
-          const saveResponse = await saveHistory(userId, randomImage);
-          console.log('Save history response:', saveResponse);
-          toast.success('Generated Image Saved In Profile!');
-
-          if (saveResponse.error) {
-            toast.error('Failed to save history.');
-          }
         } else {
           setSelectedImage('');
         }

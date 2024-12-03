@@ -12,7 +12,7 @@ const Footer = () => {
             <img src="/logo.png" alt="logo" className='w-[40px] ' />
             <span className='font-bold text-xl'>PurpleAi</span>
             </div>
-          <p> This application uses random images from a list of pre-downloaded images for creation, according to the task</p>
+          <p> This application uses random images from a list of pre-downloaded images for creation .</p>
             </div>
         </div>
       </div>
